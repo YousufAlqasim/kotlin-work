@@ -14,5 +14,5 @@ fun main (args: Array<String>) {
     val c= args[2].toFloat()
     val s = (a+b+c)/2
     val area = sqrt(s*(s-a)*(s-b)*(s-c))
-    println("Area= %.5f".format(area))
+    println("Area = %.5f".format(area))
 }
