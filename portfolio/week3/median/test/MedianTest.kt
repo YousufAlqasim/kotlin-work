@@ -18,16 +18,17 @@ class MedianTest : FreeSpec({
     "Median when size=1" {
         median(listOf(5f)) shouldBe 5f
     }
-
+ // Only one value so it has to be equal to it
     "Median when size=2" {
         median(listOf(4f, 8f)) shouldBe (6f plusOrMinus tolerance)
     }
-
+//Its even so its 12/2=6
     "Median when size=3" {
         median(listOf(9f, 2f, 5f)) shouldBe 5f
     }
-
+//odd so you select the middle value from least to greatest
     "Median when size=4" {
         median(listOf(10f, 2f, 8f, 4f)) shouldBe (6f plusOrMinus tolerance)
     }
 })
+// sorts first then does even formula
