@@ -15,6 +15,19 @@ class MedianTest : FreeSpec({
             median(listOf())
         }
     }
+    "Median when size=1" {
+        median(listOf(5f)) shouldBe 5f
+    }
 
-    // Write four more tests here
+    "Median when size=2" {
+        median(listOf(4f, 8f)) shouldBe (6f plusOrMinus tolerance)
+    }
+
+    "Median when size=3" {
+        median(listOf(9f, 2f, 5f)) shouldBe 5f
+    }
+
+    "Median when size=4" {
+        median(listOf(10f, 2f, 8f, 4f)) shouldBe (6f plusOrMinus tolerance)
+    }
 })
