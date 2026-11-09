@@ -3,12 +3,39 @@
 
 import kotlin.math.sqrt
 
+typealias TriangleSides = Triple<Double,Double,Double>
 
-typealias Triangle = Triple<Double,Double,Double>
+class Triangle(
+    val sideA: Double,
+    val sideB: Double,
+    val sideC: Double
+) {
+    init {
+        require(isValidTriangle(TriangleSides(sideA, sideB, sideC))) {
+            "Invalid triangle"
+        }
+    }
+
+    val perimeter: Double
+        get() = sideA + sideB + sideC
+
+    val semiPerimeter: Double
+        get() = perimeter / 2.0
+
+    val area: Double
+        get() {
+            val s = semiPerimeter
+            return sqrt(s*(s - sideA)*(s - sideB)*(s - sideC))
+        }
+
+    override fun toString(): String {
+        return "Triangle($sideA, $sideB, $sideC)"
+    }
+}
 
 // Add isValidTriangle() and triangleArea() functions here
 
-fun isValidTriangle(triangle: Triangle): Boolean {
+fun isValidTriangle(triangle: TriangleSides): Boolean {
     val a = triangle.first
     val b =triangle.second
     val c =triangle.third
@@ -18,7 +45,8 @@ fun isValidTriangle(triangle: Triangle): Boolean {
             b < a+c &&
             c < a+b
 }
-fun triangleArea(triangle: Triangle): Double {
+
+fun triangleArea(triangle: TriangleSides): Double {
     require(isValidTriangle(triangle)) {
         "Invalid triangle"
     }
@@ -28,5 +56,5 @@ fun triangleArea(triangle: Triangle): Double {
 
     val s = (a +b + c) / 2.0
 
-    return kotlin.math.sqrt(s*(s - a)*(s - b)*(s - c))
+    return sqrt(s*(s - a)*(s - b)*(s - c))
 }
